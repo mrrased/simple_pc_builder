@@ -14,11 +14,37 @@ const PcbuildPage = ({ component }) => {
     console.log(`selected ${value}`);
   };
 
+  console.log(component);
+
   const onSearch = (value) => console.log(value);
 
   const handleClick = (id) => {
-    // console.log(id, "handleClick");
-    localStorage.setItem("build_info", JSON.stringify(id));
+    const existingBuildInfo = localStorage.getItem("build_info");
+    let addedComponent = {};
+    if (!existingBuildInfo) {
+      addedComponent[id] = 1;
+    } else {
+      addedComponent = JSON.parse(existingBuildInfo);
+
+      let filteredResult = {};
+
+      for (let singleId in addedComponent) {
+        filteredResult = component.filter(
+          (singleObj) => singleObj?.id === singleId
+        );
+        if (filteredResult.length > 0) {
+          delete addedComponent[filteredResult[0].id];
+          localStorage.setItem("build_info", JSON.stringify(addedComponent));
+        }
+      }
+      if (addedComponent[id]) {
+        const newC = addedComponent[id];
+        addedComponent[id] = newC;
+      } else {
+        addedComponent[id] = 1;
+      }
+    }
+    localStorage.setItem("build_info", JSON.stringify(addedComponent));
   };
 
   return (

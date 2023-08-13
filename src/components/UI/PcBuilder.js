@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import cpu from "../../../public/images/cpu.png";
 import motherboard from "../../../public/images/motherboard.png";
 import powersupply from "../../../public/images/power-supply.png";
@@ -8,7 +8,27 @@ import spyware from "../../../public/images/spyware.png";
 import storagedevice from "../../../public/images/storage-device.png";
 import Link from "next/link";
 
-const PcBuilderPage = () => {
+const PcBuilderPage = ({ builder }) => {
+  const [result, setResult] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const Id = JSON.parse(localStorage.getItem("build_info"));
+
+      console.log(Id);
+      let fresult = [];
+      for (let singleId in Id) {
+        const filteredResult = builder.filter(
+          (singleObj) => singleObj?.id === singleId
+        );
+        fresult.push(filteredResult[0]);
+        console.log(filteredResult);
+      }
+      setResult(fresult);
+      console.log(fresult);
+    }
+  }, [builder]);
+
   return (
     <div className="bg-slate-200 min-h-screen">
       <div className="container py-20">
@@ -35,14 +55,32 @@ const PcBuilderPage = () => {
                 alt="Picture of the author"
                 className="mx-auto"
               />
-              <h3>CPU</h3>
+              <div>
+                <h3>CPU</h3>
+                {result?.length > 0 &&
+                result?.some((category) => category.category === "CPU") ? (
+                  <h3>
+                    {
+                      result.find((category) => category.category === "CPU")
+                        .title
+                    }
+                  </h3>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-            <Link
-              href={`/pcbuild/${"CPU"}`}
-              className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
-            >
-              Choose
-            </Link>
+            {result?.length > 0 &&
+            result.some((category) => category.category === "CPU") ? (
+              <h3>X</h3>
+            ) : (
+              <Link
+                href={`/pcbuild/${"CPU"}`}
+                className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
+              >
+                Choose
+              </Link>
+            )}
           </div>
           <div className="flex justify-between">
             <div className="flex items-center space-x-2">
@@ -54,13 +92,34 @@ const PcBuilderPage = () => {
                 className="mx-auto"
               />
               <h3>Motherboard</h3>
+              <div>
+                {result?.length > 0 &&
+                result.some(
+                  (category) => category.category === "motherboard"
+                ) ? (
+                  <h3>
+                    {
+                      result.find(
+                        (category) => category.category === "motherboard"
+                      ).title
+                    }
+                  </h3>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-            <Link
-              href={`/pcbuild/${"motherboard"}`}
-              className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
-            >
-              Choose
-            </Link>
+            {result?.length > 0 &&
+            result.some((category) => category.category === "motherboard") ? (
+              <h3>X</h3>
+            ) : (
+              <Link
+                href={`/pcbuild/${"motherboard"}`}
+                className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
+              >
+                Choose
+              </Link>
+            )}
           </div>
           <div className="flex justify-between">
             <div className="flex items-center space-x-2">
@@ -71,14 +130,32 @@ const PcBuilderPage = () => {
                 alt="Picture of the author"
                 className="mx-auto"
               />
-              <h3>RAM</h3>
+              <div>
+                <h3>RAM</h3>
+                {result?.length > 0 &&
+                result.some((category) => category.category === "RAM") ? (
+                  <h3>
+                    {
+                      result.find((category) => category.category === "RAM")
+                        .title
+                    }
+                  </h3>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-            <Link
-              href={`/pcbuild/${"RAM"}`}
-              className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
-            >
-              Choose
-            </Link>
+            {result?.length > 0 &&
+            result.some((category) => category.category === "RAM") ? (
+              <h3>X</h3>
+            ) : (
+              <Link
+                href={`/pcbuild/${"RAM"}`}
+                className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
+              >
+                Choose
+              </Link>
+            )}
           </div>
           <div className="flex justify-between">
             <div className="flex items-center space-x-2">
@@ -89,14 +166,35 @@ const PcBuilderPage = () => {
                 alt="Picture of the author"
                 className="mx-auto"
               />
-              <h3>Power Supply Unit</h3>
+              <div>
+                <h3>Power Supply Unit</h3>
+                {result?.length > 0 &&
+                result.some(
+                  (category) => category.category === "PowerSupply"
+                ) ? (
+                  <h3>
+                    {
+                      result.find(
+                        (category) => category.category === "PowerSupply"
+                      ).title
+                    }
+                  </h3>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-            <Link
-              href={`/pcbuild/${"PowerSupply"}`}
-              className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
-            >
-              Choose
-            </Link>
+            {result?.length > 0 &&
+            result.some((category) => category.category === "PowerSupply") ? (
+              <h3>X</h3>
+            ) : (
+              <Link
+                href={`/pcbuild/${"PowerSupply"}`}
+                className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
+              >
+                Choose
+              </Link>
+            )}
           </div>
           <div className="flex justify-between">
             <div className="flex items-center space-x-2">
@@ -107,14 +205,32 @@ const PcBuilderPage = () => {
                 alt="Picture of the author"
                 className="mx-auto"
               />
-              <h3>Storage Device</h3>
+              <div>
+                <h3>Storage Device</h3>
+                {result?.length > 0 &&
+                result.some((category) => category.category === "Storage") ? (
+                  <h3>
+                    {
+                      result.find((category) => category.category === "Storage")
+                        .title
+                    }
+                  </h3>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-            <Link
-              href={`/pcbuild/${"Storage"}`}
-              className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
-            >
-              Choose
-            </Link>
+            {result?.length > 0 &&
+            result.some((category) => category.category === "Storage") ? (
+              <h3>X</h3>
+            ) : (
+              <Link
+                href={`/pcbuild/${"Storage"}`}
+                className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
+              >
+                Choose
+              </Link>
+            )}
           </div>
           <div className="flex justify-between">
             <div className="flex items-center space-x-2">
@@ -125,14 +241,32 @@ const PcBuilderPage = () => {
                 alt="Picture of the author"
                 className="mx-auto"
               />
-              <h3>Monitor</h3>
+              <div>
+                <h3>Monitor</h3>
+                {result?.length > 0 &&
+                result.some((category) => category.category === "Monitor") ? (
+                  <h3>
+                    {
+                      result.find((category) => category.category === "Monitor")
+                        .title
+                    }
+                  </h3>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-            <Link
-              href={`/pcbuild/${"Monitor"}`}
-              className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
-            >
-              Choose
-            </Link>
+            {result?.length > 0 &&
+            result.some((category) => category.category === "Monitor") ? (
+              <h3>X</h3>
+            ) : (
+              <Link
+                href={`/pcbuild/${"Monitor"}`}
+                className="px-6 py-3 border border-yellow-400 rounded-md hover:cursor-pointer hover:underline hover:bg-yellow-600 transition duration-700"
+              >
+                Choose
+              </Link>
+            )}
           </div>
         </div>
       </div>

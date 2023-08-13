@@ -15,3 +15,15 @@ export default builder;
 builder.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
+
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:5000/category");
+  const data = await res.json();
+
+  return {
+    props: {
+      builder: data,
+    },
+    revalidate: 10,
+  };
+};
