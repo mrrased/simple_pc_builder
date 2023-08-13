@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ReloadOutlined, CloseOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import cpu from "../../../public/images/cpu.png";
 import motherboard from "../../../public/images/motherboard.png";
@@ -72,7 +73,29 @@ const PcBuilderPage = ({ builder }) => {
             </div>
             {result?.length > 0 &&
             result.some((category) => category.category === "CPU") ? (
-              <h3>X</h3>
+              <>
+                <div className="flex items-center space-x-2">
+                  <div>
+                    <p className="space-x-1">
+                      <span>
+                        {
+                          result.find((category) => category.category === "CPU")
+                            .price
+                        }
+                      </span>
+                      <span>TK.</span>
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center space-x-3 px-6 py-3">
+                    <h3>
+                      <CloseOutlined />{" "}
+                    </h3>
+                    <Link href={`/pcbuild/${"CPU"}`}>
+                      <ReloadOutlined />
+                    </Link>
+                  </div>
+                </div>
+              </>
             ) : (
               <Link
                 href={`/pcbuild/${"CPU"}`}
@@ -91,8 +114,8 @@ const PcBuilderPage = ({ builder }) => {
                 alt="Picture of the author"
                 className="mx-auto"
               />
-              <h3>Motherboard</h3>
               <div>
+                <h3>Motherboard</h3>
                 {result?.length > 0 &&
                 result.some(
                   (category) => category.category === "motherboard"
@@ -111,7 +134,30 @@ const PcBuilderPage = ({ builder }) => {
             </div>
             {result?.length > 0 &&
             result.some((category) => category.category === "motherboard") ? (
-              <h3>X</h3>
+              <>
+                <div className="flex items-center space-x-2">
+                  <div>
+                    <p className="space-x-1">
+                      <span>
+                        {
+                          result.find(
+                            (category) => category.category === "motherboard"
+                          ).price
+                        }
+                      </span>
+                      <span>TK.</span>
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center space-x-3 px-6 py-3">
+                    <h3>
+                      <CloseOutlined />{" "}
+                    </h3>
+                    <Link href={`/pcbuild/${"motherboard"}`}>
+                      <ReloadOutlined />
+                    </Link>
+                  </div>
+                </div>
+              </>
             ) : (
               <Link
                 href={`/pcbuild/${"motherboard"}`}
@@ -147,7 +193,29 @@ const PcBuilderPage = ({ builder }) => {
             </div>
             {result?.length > 0 &&
             result.some((category) => category.category === "RAM") ? (
-              <h3>X</h3>
+              <>
+                <div className="flex items-center space-x-2">
+                  <div>
+                    <p className="space-x-1">
+                      <span>
+                        {
+                          result.find((category) => category.category === "RAM")
+                            .price
+                        }
+                      </span>
+                      <span>TK.</span>
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center space-x-3 px-6 py-3">
+                    <h3>
+                      <CloseOutlined />{" "}
+                    </h3>
+                    <Link href={`/pcbuild/${"RAM"}`}>
+                      <ReloadOutlined />
+                    </Link>
+                  </div>
+                </div>
+              </>
             ) : (
               <Link
                 href={`/pcbuild/${"RAM"}`}
@@ -186,7 +254,31 @@ const PcBuilderPage = ({ builder }) => {
             </div>
             {result?.length > 0 &&
             result.some((category) => category.category === "PowerSupply") ? (
-              <h3>X</h3>
+              <>
+                <div className="flex items-center space-x-2">
+                  <div>
+                    <p className="space-x-1">
+                      <span>
+                        {
+                          result.find(
+                            (category) => category.category === "PowerSupply"
+                          ).price
+                        }
+                      </span>
+                      <span>TK.</span>
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-center space-x-3 px-6 py-3">
+                    <h3>
+                      <CloseOutlined />{" "}
+                    </h3>
+                    <Link href={`/pcbuild/${"PowerSupply"}`}>
+                      <ReloadOutlined />
+                    </Link>
+                  </div>
+                </div>
+              </>
             ) : (
               <Link
                 href={`/pcbuild/${"PowerSupply"}`}
@@ -222,7 +314,31 @@ const PcBuilderPage = ({ builder }) => {
             </div>
             {result?.length > 0 &&
             result.some((category) => category.category === "Storage") ? (
-              <h3>X</h3>
+              <>
+                <div className="flex items-center space-x-2">
+                  <div>
+                    <p className="space-x-1">
+                      <span>
+                        {
+                          result.find(
+                            (category) => category.category === "Storage"
+                          ).price
+                        }
+                      </span>
+                      <span>TK.</span>
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-center space-x-3 px-6 py-3">
+                    <h3>
+                      <CloseOutlined />{" "}
+                    </h3>
+                    <Link href={`/pcbuild/${"Storage"}`}>
+                      <ReloadOutlined />
+                    </Link>
+                  </div>
+                </div>
+              </>
             ) : (
               <Link
                 href={`/pcbuild/${"Storage"}`}
@@ -258,7 +374,31 @@ const PcBuilderPage = ({ builder }) => {
             </div>
             {result?.length > 0 &&
             result.some((category) => category.category === "Monitor") ? (
-              <h3>X</h3>
+              <>
+                <div className="flex items-center space-x-2">
+                  <div>
+                    <p className="space-x-1">
+                      <span>
+                        {
+                          result.find(
+                            (category) => category.category === "Monitor"
+                          ).price
+                        }
+                      </span>
+                      <span>TK.</span>
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-center space-x-3 px-6 py-3">
+                    <h3>
+                      <CloseOutlined />{" "}
+                    </h3>
+                    <Link href={`/pcbuild/${"Monitor"}`}>
+                      <ReloadOutlined />
+                    </Link>
+                  </div>
+                </div>
+              </>
             ) : (
               <Link
                 href={`/pcbuild/${"Monitor"}`}

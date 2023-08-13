@@ -167,12 +167,13 @@ const PcbuildPage = ({ component }) => {
                 <h4 className="text-base font-medium mb-3">
                   {data?.price} TK.
                 </h4>
-                <button
+                <Link
                   onClick={() => handleClick(data?.id)}
+                  href="/builder"
                   className="bg-yellow-500 px-6 py-2 rounded-md hover:bg-yellow-600 transition duration-700 hover:text-white"
                 >
                   Add
-                </button>
+                </Link>
               </div>
             </div>
           </>
