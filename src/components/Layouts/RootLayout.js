@@ -110,6 +110,9 @@ const RootLayout = ({ children }) => {
           <Link href="/builder">
             <items>PC Builder</items>
           </Link>
+          <Link href="/login" className="ml-5">
+            <items>Login</items>
+          </Link>
         </Menu>
       </Header>
 

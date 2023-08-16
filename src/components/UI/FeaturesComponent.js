@@ -29,9 +29,10 @@ const FeaturesComponent = ({ products }) => {
           md: 24,
           lg: 32,
         }}
+        className="gap-y-7"
       >
         {products?.map((news) => (
-          <Col key={news?.id} className="gutter-row" span={6}>
+          <Col key={news?.id} className="gutter-row" span={6} sm={{ order: 2 }}>
             <Card
               hoverable
               cover={
@@ -48,17 +49,17 @@ const FeaturesComponent = ({ products }) => {
                 href={`/product/${news?.id}`}
                 className="flex justify-center font-semibold hover:text-[#ef4a23] hover:underline hover:cursor-pointer"
               >
-                {news?.title}
+                {news?.title?.length > 20
+                  ? news?.title.slice(0, 50) + "..."
+                  : news?.title}
               </Link>
-              <div
-                className="line"
-                style={{
-                  height: "5px",
-                  margin: "20px 0",
-                  background: "#000",
-                  width: "100%",
-                }}
-              ></div>
+              <p className="mt-2">{news?.category}</p>
+              <p className="font-semibold text-2xl mt-1">
+                {news?.price}
+                <span className="font-semibold text-xl text-[#ef4a23] mx-1">
+                  tk.
+                </span>
+              </p>
 
               <p
                 style={{
@@ -70,39 +71,13 @@ const FeaturesComponent = ({ products }) => {
                   fontSize: "12px",
                 }}
               >
-                <span>
-                  <CalendarOutlined /> {news?.release_date}
+                <span className="text-base text-green-500 font-medium">
+                  {news?.status}
                 </span>
-                <span>
-                  <CommentOutlined /> {news?.comment_count} COMMENTS
-                </span>
-                <span>
-                  <ProfileOutlined /> {news?.category}
+                <span className="text-base font-medium">
+                  rating {news?.rating}
                 </span>
               </p>
-
-              <p style={{ fontSize: "15px" }}>
-                {news?.description?.length > 100
-                  ? news?.description.slice(0, 70) + "..."
-                  : news?.description}
-              </p>
-              <Link href={`/news/${news?.id}`}>
-                <p
-                  style={{
-                    fontSize: "15px",
-                    marginTop: "20px",
-                    backgroundColor: "black",
-                    color: "white",
-                    width: "100%",
-                    padding: "2px 5px ",
-                    fontWeight: "300",
-                    letterSpacing: "3px",
-                    textAlign: "center",
-                  }}
-                >
-                  Keep Reading <ArrowRightOutlined />
-                </p>
-              </Link>
             </Card>
           </Col>
         ))}

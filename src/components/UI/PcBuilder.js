@@ -16,24 +16,45 @@ const PcBuilderPage = ({ builder }) => {
     if (typeof window !== "undefined") {
       const Id = JSON.parse(localStorage.getItem("build_info"));
 
-      console.log(Id);
       let fresult = [];
       for (let singleId in Id) {
         const filteredResult = builder.filter(
           (singleObj) => singleObj?.id === singleId
         );
         fresult.push(filteredResult[0]);
-        console.log(filteredResult);
       }
       setResult(fresult);
-      console.log(fresult);
     }
   }, [builder]);
+
+  const handleRemove = (ct) => {
+    const exist = JSON.parse(localStorage.getItem("build_info"));
+
+    const filteredResult = builder.filter(
+      (singleObj) => singleObj?.category === ct
+    );
+
+    let singleObj = null;
+    for (let singleId in exist) {
+      const obj = filteredResult.find(
+        (singleObj) => singleObj?.id === singleId
+      );
+      if (obj) {
+        singleObj = obj;
+      }
+    }
+
+    delete exist[singleObj?.id];
+
+    localStorage.setItem("build_info", JSON.stringify(exist));
+
+    location.reload();
+  };
 
   return (
     <div className="bg-slate-200 min-h-screen">
       <div className="container py-20">
-        <div className="grid grid-rows-6 gap-4 w-3/4 mx-auto border border-yellow-500 bg-white p-4">
+        <div className="grid grid-rows-6 gap-4 w-full md:w-3/4 mx-auto border border-yellow-500 bg-white p-4">
           <div className="flex items-center justify-between border-b-4 border-yellow-500 pb-3">
             <div>
               <h3 className="text-lg font-semibold">
@@ -87,7 +108,10 @@ const PcBuilderPage = ({ builder }) => {
                     </p>
                   </div>
                   <div className="flex items-center justify-center space-x-3 px-6 py-3">
-                    <h3>
+                    <h3
+                      onClick={() => handleRemove("CPU")}
+                      className="hover:cursor-pointer "
+                    >
                       <CloseOutlined />{" "}
                     </h3>
                     <Link href={`/pcbuild/${"CPU"}`}>
@@ -149,7 +173,10 @@ const PcBuilderPage = ({ builder }) => {
                     </p>
                   </div>
                   <div className="flex items-center justify-center space-x-3 px-6 py-3">
-                    <h3>
+                    <h3
+                      onClick={() => handleRemove("motherboard")}
+                      className="hover:cursor-pointer "
+                    >
                       <CloseOutlined />{" "}
                     </h3>
                     <Link href={`/pcbuild/${"motherboard"}`}>
@@ -207,7 +234,10 @@ const PcBuilderPage = ({ builder }) => {
                     </p>
                   </div>
                   <div className="flex items-center justify-center space-x-3 px-6 py-3">
-                    <h3>
+                    <h3
+                      onClick={() => handleRemove("RAM")}
+                      className="hover:cursor-pointer "
+                    >
                       <CloseOutlined />{" "}
                     </h3>
                     <Link href={`/pcbuild/${"RAM"}`}>
@@ -270,7 +300,10 @@ const PcBuilderPage = ({ builder }) => {
                   </div>
 
                   <div className="flex items-center justify-center space-x-3 px-6 py-3">
-                    <h3>
+                    <h3
+                      onClick={() => handleRemove("PowerSupply")}
+                      className="hover:cursor-pointer "
+                    >
                       <CloseOutlined />{" "}
                     </h3>
                     <Link href={`/pcbuild/${"PowerSupply"}`}>
@@ -330,7 +363,10 @@ const PcBuilderPage = ({ builder }) => {
                   </div>
 
                   <div className="flex items-center justify-center space-x-3 px-6 py-3">
-                    <h3>
+                    <h3
+                      onClick={() => handleRemove("Storage")}
+                      className="hover:cursor-pointer "
+                    >
                       <CloseOutlined />{" "}
                     </h3>
                     <Link href={`/pcbuild/${"Storage"}`}>
@@ -390,7 +426,10 @@ const PcBuilderPage = ({ builder }) => {
                   </div>
 
                   <div className="flex items-center justify-center space-x-3 px-6 py-3">
-                    <h3>
+                    <h3
+                      onClick={() => handleRemove("Monitor")}
+                      className="hover:cursor-pointer "
+                    >
                       <CloseOutlined />{" "}
                     </h3>
                     <Link href={`/pcbuild/${"Monitor"}`}>

@@ -1,4 +1,5 @@
 import RootLayout from "@/components/Layouts/RootLayout";
+import BannerPage from "@/components/UI/Banner";
 import FeaturedCategory from "@/components/UI/Category";
 import FeaturesComponent from "@/components/UI/FeaturesComponent";
 import dynamic from "next/dynamic";
@@ -21,6 +22,7 @@ export default function HomePage({ products }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <BannerPage />
       <DynamicUI />
       <FeaturesComponent products={products} />
       <button className="text-red-500 border border-sky-500 px-6 hover:bg-black mt-10">
