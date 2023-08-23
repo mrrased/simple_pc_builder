@@ -1,6 +1,5 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import BannerPage from "@/components/UI/Banner";
-import FeaturedCategory from "@/components/UI/Category";
 import FeaturesComponent from "@/components/UI/FeaturesComponent";
 import dynamic from "next/dynamic";
 import Head from "next/head";
@@ -25,9 +24,6 @@ export default function HomePage({ products }) {
       <BannerPage />
       <DynamicUI />
       <FeaturesComponent products={products} />
-      <button className="text-red-500 border border-sky-500 px-6 hover:bg-black mt-10">
-        submit
-      </button>
     </>
   );
 }

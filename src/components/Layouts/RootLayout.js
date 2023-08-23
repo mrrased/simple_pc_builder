@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   ProfileOutlined,
   UserOutlined,
@@ -7,19 +7,28 @@ import {
   GoogleSquareFilled,
   TwitterSquareFilled,
 } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
+import { Button, Layout, Menu } from "antd";
 const { Header, Content, Footer } = Layout;
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const RootLayout = ({ children }) => {
+  const { data: session } = useSession();
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
   const handleMenuClick = (e) => {
     if (e.key === "7") {
       setOpen(false);
     }
+  };
+
+  const handleItemClick = (routeName) => {
+    router.push(`/${routeName}`);
   };
 
   const handleOpenChange = (flag) => {
@@ -29,30 +38,32 @@ const RootLayout = ({ children }) => {
     {
       label: "CPU / Processor",
       key: "1",
+      routeName: "cpu",
     },
     {
       label: "Motherboard",
       key: "2",
+      routeName: "motherboard",
     },
     {
       label: "RAM",
       key: "3",
+      routeName: "ram",
     },
     {
       label: "Power Supply Unit",
       key: "4",
+      routeName: "power",
     },
     {
       label: "Storage Device",
       key: "5",
+      routeName: "storage",
     },
     {
       label: "Monitor",
       key: "6",
-    },
-    {
-      label: "Others",
-      key: "7",
+      routeName: "monitor",
     },
   ];
 
@@ -84,16 +95,19 @@ const RootLayout = ({ children }) => {
           mode="vertical"
           className="text-white text-sm no-underline uppercase"
         >
-          <Link href="/allNews">
-            <items>
-              <ProfileOutlined />
-              All News
-            </items>
+          <Link href="/builder" className="ml-9">
+            <items>PC Builder</items>
           </Link>
-          <Link href="/about" className="mx-5">
+          <button className="mx-5">
             <Dropdown
               menu={{
-                items,
+                items: items.map((item) => ({
+                  ...item,
+                  onClick: () => {
+                    handleItemClick(item.routeName);
+                    handleMenuClick({ key: item.key });
+                  },
+                })),
                 onClick: handleMenuClick,
               }}
               onOpenChange={handleOpenChange}
@@ -106,13 +120,19 @@ const RootLayout = ({ children }) => {
                 </Space>
               </span>
             </Dropdown>
-          </Link>
-          <Link href="/builder">
-            <items>PC Builder</items>
-          </Link>
-          <Link href="/login" className="ml-5">
-            <items>Login</items>
-          </Link>
+          </button>
+
+          {session?.user?.email ? (
+            <items>
+              <Button onClick={() => signOut()} type="primary" className="ml-5">
+                Logout
+              </Button>
+            </items>
+          ) : (
+            <Link href="/login" className="ml-5">
+              <items>Login</items>
+            </Link>
+          )}
         </Menu>
       </Header>
 
@@ -136,23 +156,23 @@ const RootLayout = ({ children }) => {
             fontSize: "28px",
           }}
         >
-          PH-NEWS PORTAL
+          PC-Builder
         </h2>
         <p className={styles.social_icons}>
-          <Link href="https://web.facebook.com/groups/programmingherocommunity">
+          <Link href="*">
             <FacebookFilled />
           </Link>
           <Link href="www.twitter.com">
             <TwitterSquareFilled />
           </Link>
-          <Link href="https://web.programming-hero.com/home/">
+          <Link href="*">
             <GoogleSquareFilled />
           </Link>
-          <Link href="www.linkedin.com">
+          <Link href="*">
             <LinkedinFilled />
           </Link>
         </p>
-        News Portal ©2023 Created by Programming Hero
+        © copyright 2023 by pc-builder
       </Footer>
     </Layout>
   );

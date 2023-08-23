@@ -7,7 +7,6 @@ const MotherboardUiPage = ({ motherboard }) => {
     (board) => board.category === "motherboard"
   );
 
-  const { Meta } = Card;
   return (
     <>
       <h1
@@ -17,7 +16,7 @@ const MotherboardUiPage = ({ motherboard }) => {
           margin: "30px 0px",
         }}
       >
-        Featured Products
+        Motherboard
       </h1>
       <Row
         gutter={{
@@ -26,9 +25,17 @@ const MotherboardUiPage = ({ motherboard }) => {
           md: 24,
           lg: 32,
         }}
+        className="gap-y-7"
       >
         {result?.map((news) => (
-          <Col key={news?.id} className="gutter-row" span={6}>
+          <Col
+            key={news?.id}
+            className="gutter-row"
+            span={6}
+            xs={24}
+            sm={8}
+            lg={6}
+          >
             <Card
               hoverable
               cover={

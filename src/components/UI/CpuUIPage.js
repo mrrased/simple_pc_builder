@@ -5,7 +5,6 @@ import Link from "next/link";
 const CpuUIPage = ({ cpu }) => {
   const result = cpu?.filter((board) => board.category === "CPU");
 
-  const { Meta } = Card;
   return (
     <>
       <h1
@@ -15,7 +14,7 @@ const CpuUIPage = ({ cpu }) => {
           margin: "30px 0px",
         }}
       >
-        Featured Products
+        Cpu
       </h1>
       <Row
         gutter={{
@@ -24,9 +23,17 @@ const CpuUIPage = ({ cpu }) => {
           md: 24,
           lg: 32,
         }}
+        className="gap-y-7"
       >
         {result?.map((news) => (
-          <Col key={news?.id} className="gutter-row" span={6}>
+          <Col
+            key={news?.id}
+            className="gutter-row"
+            span={6}
+            xs={24}
+            sm={8}
+            lg={6}
+          >
             <Card
               hoverable
               cover={

@@ -28,7 +28,7 @@ const FeaturedCategory = () => {
           >
             Featured Category
           </h1>
-          <div className="grid grid-cols-6 gap-4 justify-center">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-4 justify-center">
             <div className="bg-[#d8dbe2] p-4 hover:bg-[#dfe1e6] hover:cursor-pointer">
               <Image
                 src={Motherboard}

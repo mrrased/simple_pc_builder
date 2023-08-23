@@ -3,7 +3,6 @@ import PowerSupplyUIPage from "@/components/UI/PowerSupply";
 import React from "react";
 
 const PowerSupplyPage = ({ power }) => {
-  console.log(power);
   return (
     <div>
       <PowerSupplyUIPage power={power} />

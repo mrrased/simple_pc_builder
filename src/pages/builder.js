@@ -16,7 +16,7 @@ builder.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch("http://localhost:5000/category");
   const data = await res.json();
 
@@ -24,6 +24,5 @@ export const getStaticProps = async () => {
     props: {
       builder: data,
     },
-    revalidate: 10,
   };
 };

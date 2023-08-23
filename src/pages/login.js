@@ -18,14 +18,14 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    createUserWithEmailAndPassword(data.email, data.password);
+    // createUserWithEmailAndPassword(data.email, data.password);
   };
   return (
     <div>
       <Head>
         <title>Next Login</title>
       </Head>
-      <div className={styles.form}>
+      <div className={`${styles.form} w-10/12 md:w-1/3`}>
         <h3>LOGIN</h3>
         <div className={styles.social_icons}>
           <GoogleOutlined

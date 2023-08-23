@@ -12,7 +12,7 @@ const ProductDetails = ({ product }) => {
   return (
     <>
       <Row style={{ marginTop: "80px", alignItems: "center" }}>
-        <Col md={6} lg={12}>
+        <Col md={12} lg={12}>
           <Image
             alt="example"
             src={product?.image_url}
@@ -21,8 +21,10 @@ const ProductDetails = ({ product }) => {
             responsive
           />
         </Col>
-        <Col md={6} lg={12} style={{ paddingLeft: "20px" }}>
-          <h1 style={{ fontSize: "30px" }}>{product?.title}</h1>
+        <Col md={12} lg={12} style={{ paddingLeft: "20px" }}>
+          <h1 className="text-xl md:text-3xl font-semibold">
+            {product?.title}
+          </h1>
 
           <div className="space-x-7 mt-3">
             <span className="text-[#808080] font-medium text-base">
@@ -114,7 +116,7 @@ const ProductDetails = ({ product }) => {
                 color: "gray",
                 fontSize: "16px",
               }}
-              className="mt-2 bg-slate-300 px-6 py-1 rounded-full text-base font-medium "
+              className="mt-2 bg-slate-300 px-3 md:px-6 py-1 rounded-full text-base font-medium "
             >
               Rating: <span className="text-black">{product?.rating}</span>
             </span>
@@ -123,7 +125,7 @@ const ProductDetails = ({ product }) => {
                 color: "gray",
                 fontSize: "16px",
               }}
-              className="mt-2 bg-slate-300 px-6 py-1 rounded-full text-base font-medium "
+              className="mt-2 bg-slate-300 px-3 md:px-6 py-1 rounded-full text-base font-medium "
             >
               Reviews: <span className="text-black">{product?.reviews}</span>
             </span>

@@ -7,9 +7,15 @@ import {
   ProfileOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const FeaturesComponent = ({ products }) => {
-  const { Meta } = Card;
+  const [randomArray, setRandomArray] = useState([]);
+
+  useEffect(() => {
+    const randomizeArray = [...products].sort(() => 0.5 - Math.random());
+    setRandomArray(randomizeArray.slice(0, 6));
+  }, [products]);
 
   return (
     <>
@@ -31,8 +37,16 @@ const FeaturesComponent = ({ products }) => {
         }}
         className="gap-y-7"
       >
-        {products?.map((news) => (
-          <Col key={news?.id} className="gutter-row" span={6} sm={{ order: 2 }}>
+        {randomArray?.map((news) => (
+          <Col
+            key={news?.id}
+            className="gutter-row"
+            span={6}
+            xs={24}
+            sm={8}
+            md={8}
+            lg={6}
+          >
             <Card
               hoverable
               cover={

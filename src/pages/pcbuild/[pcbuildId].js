@@ -49,7 +49,7 @@ const PcbuildPage = ({ component }) => {
 
   return (
     <div className="bg-stone-200 py-10">
-      <div className="flex items-center justify-between w-2/3 mx-auto bg-white mb-4 p-4 rounded-md">
+      <div className="md:flex items-center justify-between w-full md:w-2/3 mx-auto bg-white mb-4 p-4 rounded-md">
         <div className="flex items-center">
           <Link href="/builder" className="flex items-center">
             <ArrowLeftOutlined className="mr-3" />
@@ -86,9 +86,9 @@ const PcbuildPage = ({ component }) => {
           <>
             <div
               key={data?.id}
-              className="flex items-center justify-between w-2/3 mx-auto bg-white mb-4 p-4 rounded-md"
+              className="md:flex items-center justify-between w-10/12 md:w-2/3 mx-auto bg-white mb-4 p-4 rounded-md"
             >
-              <div className="flex items-center space-x-8">
+              <div className="md:flex items-center md:space-x-8">
                 <div>
                   <Image
                     src={data?.image_url}
@@ -96,6 +96,7 @@ const PcbuildPage = ({ component }) => {
                     height={180}
                     responsive
                     alt="pc component image"
+                    className="mx-auto md:mx-0"
                   />
                 </div>
                 <div>
@@ -164,7 +165,7 @@ const PcbuildPage = ({ component }) => {
                 </div>
               </div>
               <div>
-                <h4 className="text-base font-medium mb-3">
+                <h4 className="text-base font-medium mb-3 mt-2">
                   {data?.price} TK.
                 </h4>
                 <Link

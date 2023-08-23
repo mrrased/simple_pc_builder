@@ -5,7 +5,6 @@ import Link from "next/link";
 const MonitorUIPage = ({ monitor }) => {
   const result = monitor?.filter((board) => board.category === "Monitor");
 
-  const { Meta } = Card;
   return (
     <>
       <h1
@@ -15,7 +14,7 @@ const MonitorUIPage = ({ monitor }) => {
           margin: "30px 0px",
         }}
       >
-        Featured Products
+        Monitor
       </h1>
       <Row
         gutter={{
@@ -24,9 +23,17 @@ const MonitorUIPage = ({ monitor }) => {
           md: 24,
           lg: 32,
         }}
+        className="gap-y-7"
       >
         {result?.map((news) => (
-          <Col key={news?.id} className="gutter-row" span={6}>
+          <Col
+            key={news?.id}
+            className="gutter-row"
+            span={6}
+            xs={24}
+            sm={8}
+            lg={6}
+          >
             <Card
               hoverable
               cover={
