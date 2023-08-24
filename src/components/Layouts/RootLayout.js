@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import {
-  ProfileOutlined,
-  UserOutlined,
   FacebookFilled,
   LinkedinFilled,
   GoogleSquareFilled,
@@ -13,7 +11,7 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const RootLayout = ({ children }) => {
@@ -21,49 +19,49 @@ const RootLayout = ({ children }) => {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
-  const handleMenuClick = (e) => {
+  const HandleMenuClick = (e) => {
     if (e.key === "7") {
       setOpen(false);
     }
   };
 
-  const handleItemClick = (routeName) => {
-    router.push(`/${routeName}`);
+  const HandleItemClick = (rn) => {
+    router.push(`/${rn}`);
   };
 
-  const handleOpenChange = (flag) => {
+  const HandleOpenChange = (flag) => {
     setOpen(flag);
   };
-  const items = [
+  const Items = [
     {
       label: "CPU / Processor",
       key: "1",
-      routeName: "cpu",
+      name: "cpu",
     },
     {
       label: "Motherboard",
       key: "2",
-      routeName: "motherboard",
+      name: "motherboard",
     },
     {
       label: "RAM",
       key: "3",
-      routeName: "ram",
+      name: "ram",
     },
     {
       label: "Power Supply Unit",
       key: "4",
-      routeName: "power",
+      name: "power",
     },
     {
       label: "Storage Device",
       key: "5",
-      routeName: "storage",
+      name: "storage",
     },
     {
       label: "Monitor",
       key: "6",
-      routeName: "monitor",
+      name: "monitor",
     },
   ];
 
@@ -96,21 +94,21 @@ const RootLayout = ({ children }) => {
           className="text-white text-sm no-underline uppercase"
         >
           <Link href="/builder" className="ml-9">
-            <items>PC Builder</items>
+            PC Builder
           </Link>
           <button className="mx-5">
             <Dropdown
               menu={{
-                items: items.map((item) => ({
+                items: Items?.map((item) => ({
                   ...item,
                   onClick: () => {
-                    handleItemClick(item.routeName);
-                    handleMenuClick({ key: item.key });
+                    HandleItemClick(item.name);
+                    HandleMenuClick({ key: item.key });
                   },
                 })),
-                onClick: handleMenuClick,
+                onClick: HandleMenuClick,
               }}
-              onOpenChange={handleOpenChange}
+              onOpenChange={HandleOpenChange}
               open={open}
             >
               <span onClick={(e) => e.preventDefault()}>
@@ -123,14 +121,12 @@ const RootLayout = ({ children }) => {
           </button>
 
           {session?.user?.email ? (
-            <items>
-              <Button onClick={() => signOut()} type="primary" className="ml-5">
-                Logout
-              </Button>
-            </items>
+            <Button onClick={() => signOut()} type="primary" className="ml-5">
+              Logout
+            </Button>
           ) : (
             <Link href="/login" className="ml-5">
-              <items>Login</items>
+              Login
             </Link>
           )}
         </Menu>

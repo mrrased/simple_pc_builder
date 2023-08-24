@@ -14,8 +14,6 @@ const PcbuildPage = ({ component }) => {
     console.log(`selected ${value}`);
   };
 
-  console.log(component);
-
   const onSearch = (value) => console.log(value);
 
   const handleClick = (id) => {

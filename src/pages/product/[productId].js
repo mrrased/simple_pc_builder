@@ -62,51 +62,53 @@ const ProductDetails = ({ product }) => {
             product?.key?.map((ke, i) => {
               return (
                 <>
-                  <ul key={i} className="space-y-3">
-                    {ke.model && <li>Model: {ke?.model}</li>}
-                    {ke.ports && <li>Ports: {ke.ports}</li>}
-                    {ke.features && <li>Features: {ke.features}</li>}
-                    {ke.resolution && <li>Resolution: {ke.resolution}</li>}
-                    {ke.clockspeed && <li>Clock Speed:{ke.clockspeed}</li>}
-                    {ke.cpu && <li>CPU: {ke.cpu}</li>}
-                    {ke.chipset && <li>Chipset: {ke.chipset}</li>}
-                    {ke.mpn && <li>MPN: {ke.mpn}</li>}
-                    {ke.memory && <li>Memory: {ke.memory}</li>}
-                    {ke.interface && <li>Interface: {ke.interface}</li>}
-                    {ke.voltage && <li>Voltage: {ke.voltage}</li>}
-                    {ke.frequency && <li>Frequency: {ke.frequency}</li>}
-                    {ke.capacity && <li>Capacity: {ke.capacity}</li>}
-                    {ke.architecture && (
-                      <li>Memory Architecture: {ke.architecture}</li>
-                    )}
-                    {ke.pin && <li>PIN: {ke.pin}</li>}
-                    {ke.continuespower && (
-                      <li>Continues Power: {ke.continuespower}</li>
-                    )}
-                    {ke.fan && <li>Fan: {ke.fan}</li>}
-                    {ke.atxversion && <li>ATX Version: {ke.atxversion}</li>}
-                    {ke.efficiencyrating && (
-                      <li>Efficiency Rating: {ke.efficiencyrating}</li>
-                    )}
-                    {ke.storage && <li>Storage: {ke.storage}</li>}
-                    {ke.seektime && <li>Seek Time: {ke.seektime}</li>}
-                    {ke.buffer && <li>Buffer: {ke.buffer}</li>}
-                    {ke.rotationalspeed && (
-                      <li>Rotational Speed: {ke.rotationalspeed}</li>
-                    )}
-                    {ke.cachesize && <li>Cache Size: {ke.cachesize}</li>}
-                    {ke.display && <li>Display: {ke.display}</li>}
-                    {ke.speed && <li>Speed: {ke.speed}</li>}
-                    {ke.outside && ke.outside.length > 0 && (
-                      <li>
-                        <ul className="space-y-3">
-                          {ke.outside.map((item, index) => (
-                            <li key={index}>{item}</li>
-                          ))}
-                        </ul>
-                      </li>
-                    )}
-                  </ul>
+                  <div key={i}>
+                    <ul className="space-y-3">
+                      {ke.model && <li>Model: {ke?.model}</li>}
+                      {ke.ports && <li>Ports: {ke.ports}</li>}
+                      {ke.features && <li>Features: {ke.features}</li>}
+                      {ke.resolution && <li>Resolution: {ke.resolution}</li>}
+                      {ke.clockspeed && <li>Clock Speed:{ke.clockspeed}</li>}
+                      {ke.cpu && <li>CPU: {ke.cpu}</li>}
+                      {ke.chipset && <li>Chipset: {ke.chipset}</li>}
+                      {ke.mpn && <li>MPN: {ke.mpn}</li>}
+                      {ke.memory && <li>Memory: {ke.memory}</li>}
+                      {ke.interface && <li>Interface: {ke.interface}</li>}
+                      {ke.voltage && <li>Voltage: {ke.voltage}</li>}
+                      {ke.frequency && <li>Frequency: {ke.frequency}</li>}
+                      {ke.capacity && <li>Capacity: {ke.capacity}</li>}
+                      {ke.architecture && (
+                        <li>Memory Architecture: {ke.architecture}</li>
+                      )}
+                      {ke.pin && <li>PIN: {ke.pin}</li>}
+                      {ke.continuespower && (
+                        <li>Continues Power: {ke.continuespower}</li>
+                      )}
+                      {ke.fan && <li>Fan: {ke.fan}</li>}
+                      {ke.atxversion && <li>ATX Version: {ke.atxversion}</li>}
+                      {ke.efficiencyrating && (
+                        <li>Efficiency Rating: {ke.efficiencyrating}</li>
+                      )}
+                      {ke.storage && <li>Storage: {ke.storage}</li>}
+                      {ke.seektime && <li>Seek Time: {ke.seektime}</li>}
+                      {ke.buffer && <li>Buffer: {ke.buffer}</li>}
+                      {ke.rotationalspeed && (
+                        <li>Rotational Speed: {ke.rotationalspeed}</li>
+                      )}
+                      {ke.cachesize && <li>Cache Size: {ke.cachesize}</li>}
+                      {ke.display && <li>Display: {ke.display}</li>}
+                      {ke.speed && <li>Speed: {ke.speed}</li>}
+                      {ke.outside && ke.outside.length > 0 && (
+                        <li>
+                          <ul className="space-y-3">
+                            {ke.outside.map((item, index) => (
+                              <li key={index}>{item}</li>
+                            ))}
+                          </ul>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
                 </>
               );
             })}

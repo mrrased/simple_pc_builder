@@ -54,7 +54,7 @@ const FeaturesComponent = ({ products }) => {
                   src={news?.image_url}
                   width={500}
                   height={200}
-                  responsive
+                  responsive="true"
                   alt="news image"
                 />
               }

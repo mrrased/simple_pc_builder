@@ -21,7 +21,13 @@ const BannerPage = () => {
   return (
     <div className="grid md:grid-cols-4 gap-4">
       <div className="col-span-3 mt-7 ">
-        <Image src={img} width={982} height={500} responsive alt="news image" />
+        <Image
+          src={img}
+          width={982}
+          height={500}
+          responsive="true"
+          alt="news image"
+        />
       </div>
       <div>
         <div className="flex justify-center bg-orange-200 py-6 mt-7">
@@ -58,7 +64,7 @@ const BannerPage = () => {
             src={bannerRight}
             width={982}
             height={500}
-            responsive
+            responsive="true"
             alt="banner image"
           />
         </div>
