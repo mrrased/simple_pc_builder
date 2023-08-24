@@ -17,13 +17,23 @@ PowerSupplyPage.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5000/category");
-  const data = await res.json();
+  try {
+    const res = await fetch("http://localhost:5000/category");
+    const rawData = await res.text();
+    const data = JSON.parse(rawData);
 
-  return {
-    props: {
-      power: data,
-    },
-    revalidate: 10,
-  };
+    return {
+      props: {
+        power: data,
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
+    return {
+      props: {
+        power: null, // or some default data
+      },
+      revalidate: 10,
+    };
+  }
 };
