@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const MotherboardUiPage = ({ motherboard }) => {
-  const result = motherboard
-    ? motherboard?.filter((board) => board.category === "motherboard")
-    : [];
+  const result = motherboard?.filter(
+    (board) => board.category === "motherboard"
+  );
 
   return (
     <>
