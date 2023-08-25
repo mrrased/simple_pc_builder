@@ -158,14 +158,25 @@ ProductDetails.getLayout = function getLayout(page) {
 };
 
 export const getServerSideProps = async (context) => {
-  const { params } = context;
-  const res = await fetch(`http://localhost:5000/category/${params.productId}`);
-  const data = await res.json();
-  // console.log(data);
+  try {
+    const { params } = context;
+    const res = await fetch(
+      `https://pc-builder-server-ot0g.onrender.com/product/${params.productId}`
+    );
+    const rawData = await res.text();
+    const data = JSON.parse(rawData);
+    console.log(data);
 
-  return {
-    props: {
-      product: data,
-    },
-  };
+    return {
+      props: {
+        product: data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        product: null,
+      },
+    };
+  }
 };

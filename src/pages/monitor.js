@@ -17,13 +17,15 @@ MonitorPage.getLayout = function getLayout(page) {
 
 export const getStaticProps = async () => {
   try {
-    const res = await fetch("http://localhost:5000/category");
+    const res = await fetch(
+      "https://pc-builder-server-ot0g.onrender.com/products"
+    );
     const rawData = await res.text();
     const data = JSON.parse(rawData);
 
     return {
       props: {
-        monitor: data,
+        monitor: data.data,
       },
       revalidate: 10,
     };

@@ -190,13 +190,15 @@ PcbuildPage.getLayout = function getLayout(page) {
 
 export const getServerSideProps = async (context) => {
   const { params } = context;
-  const res = await fetch(`http://localhost:5000/category`);
+  const res = await fetch(
+    `https://pc-builder-server-ot0g.onrender.com/products`
+  );
   const result = await res.json();
 
   let data = null;
 
   if (result) {
-    data = result.filter((data) => data.category === params.pcbuildId);
+    data = result?.data?.filter((data) => data.category === params.pcbuildId);
   }
 
   return {

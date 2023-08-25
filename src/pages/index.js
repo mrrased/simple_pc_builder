@@ -33,12 +33,14 @@ HomePage.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5000/category");
+  const res = await fetch(
+    "https://pc-builder-server-ot0g.onrender.com/products"
+  );
   const data = await res.json();
 
   return {
     props: {
-      products: data,
+      products: data.data,
     },
     revalidate: 10,
   };

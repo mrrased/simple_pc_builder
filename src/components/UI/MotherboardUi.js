@@ -49,7 +49,7 @@ const MotherboardUiPage = ({ motherboard }) => {
               }
             >
               <Link
-                href={`/product/${news?.id}`}
+                href={`/product/${news?._id}`}
                 className="flex justify-center font-semibold hover:text-[#ef4a23] hover:underline hover:cursor-pointer"
               >
                 {news?.title}
