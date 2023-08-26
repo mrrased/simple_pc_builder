@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "json-server": "json-server --watch db.json --port 5000",
     "lint": "next lint"
   },
   "dependencies": {
@@ -15,7 +14,6 @@
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
     "firebase": "^10.1.0",
-    "json-server": "^0.17.3",
     "next": "13.4.12",
     "next-auth": "^4.23.0",
     "postcss": "8.4.27",
