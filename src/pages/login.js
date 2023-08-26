@@ -38,7 +38,7 @@ const LoginPage = () => {
           <GithubOutlined
             onClick={() =>
               signIn("github", {
-                callbackUrl: "http://localhost:3000/",
+                callbackUrl: "https://simple-pc-builder-1d4u.vercel.app/",
               })
             }
           />
