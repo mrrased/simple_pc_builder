@@ -28,17 +28,10 @@ const LoginPage = () => {
       <div className={`${styles.form} w-10/12 md:w-1/3`}>
         <h3>LOGIN</h3>
         <div className={styles.social_icons}>
-          <GoogleOutlined
-            onClick={() =>
-              signIn("google", {
-                callbackUrl: "http://localhost:3000/",
-              })
-            }
-          />
           <GithubOutlined
             onClick={() =>
               signIn("github", {
-                callbackUrl: "https://simple-pc-builder-1d4u.vercel.app/",
+                callbackUrl: "/",
               })
             }
           />
